@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "MaterializedViewProcessor": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7060"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 32617,
+      "useSSL": false
+    }
+  }
+}
