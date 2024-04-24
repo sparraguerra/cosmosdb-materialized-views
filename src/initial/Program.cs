@@ -31,26 +31,6 @@ try
             options.Converters.Add(new JsonStringEnumConverter());
             options.Converters.Add(new TimespanJsonConverter()); 
         });
-
-        services.AddSingleton(s => 
-        {
-            var connectionString = context.Configuration["CosmosDBConnection"];
-            if (string.IsNullOrEmpty(connectionString))
-            {
-                throw new InvalidOperationException(
-                    "Please specify a valid CosmosDBConnection in the appSettings.json file or your Azure Functions Settings.");
-            }
-
-            var serializerOptions = new CosmosSerializationOptions
-            {
-                IgnoreNullValues = true,
-                PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-            };
-
-            return new CosmosClientBuilder(connectionString)
-                    .WithSerializerOptions(serializerOptions)
-                    .Build();
-        });
     })
     .Build();
 
